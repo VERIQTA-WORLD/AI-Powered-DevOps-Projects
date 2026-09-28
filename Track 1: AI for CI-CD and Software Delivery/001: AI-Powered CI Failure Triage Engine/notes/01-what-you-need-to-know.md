@@ -1,8 +1,5 @@
 
 
-
-# 01 — What You Need to Know
-
 Project 001 begins with an important idea:
 
 You do **not** need to be an AI engineer, machine-learning specialist, senior DevOps engineer, or SRE to complete this project.
