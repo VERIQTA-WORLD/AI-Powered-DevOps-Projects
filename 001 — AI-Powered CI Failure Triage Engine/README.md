@@ -1,12 +1,15 @@
-# 001 — AI-Powered CI Failure Triage Engine
+# 001 - AI-Powered CI Failure Triage Engine
+
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/34b1d252-30ed-4321-8ed2-03c9cae210b9" />
+
 
 > Build a production-minded service that turns failed CI pipeline logs into structured, evidence-backed triage reports while protecting secrets, validating AI output, and remaining useful when the AI provider fails.
 
-**Level:** Foundation  
-**Track:** AI for CI/CD and Software Delivery  
-**Project:** 001 of 100  
-**Primary Focus:** CI/CD · Python · AI/LLMs · Log Analysis · Security · Testing · Observability  
-**Learning Style:** Guided Build → Failure Investigation → Independent Engineering Challenge
+- **Level:** Foundation  
+- **Track:** AI for CI/CD and Software Delivery  
+- **Project:** 001 of 100  
+- **Primary Focus:** CI/CD · Python · AI/LLMs · Log Analysis · Security · Testing · Observability  
+- **Learning Style:** Guided Build → Failure Investigation → Independent Engineering Challenge
 
 ---
 
