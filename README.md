@@ -1,5 +1,9 @@
 # AI-Powered DevOps Projects
 
+
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/06dafafd-b4a2-4f49-9d8c-3e4f7a2c9172" />
+
+
 Build production-minded systems that apply artificial intelligence to software delivery, cloud operations, platform engineering, site reliability, security, observability, infrastructure, and cost management.
 
 This repository contains 100 hands-on projects based on problems engineers encounter in real environments. Each project goes beyond a short tool demonstration. You will design the system, write the code, provision the infrastructure, integrate delivery pipelines, secure the AI workflow, observe its behavior, test failure conditions, recover safely, and document the result.
