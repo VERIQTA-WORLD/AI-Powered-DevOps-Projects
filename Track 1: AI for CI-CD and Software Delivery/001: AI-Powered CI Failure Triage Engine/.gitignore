@@ -1,0 +1,635 @@
+# ==============================================================================
+# Project 001 — AI-Powered CI Failure Triage Engine
+# .gitignore
+# ==============================================================================
+#
+# This repository is public.
+#
+# Never commit:
+# - real credentials
+# - populated environment files
+# - local virtual environments
+# - Python caches
+# - test caches
+# - coverage artifacts
+# - local IDE state
+# - runtime logs
+# - generated evaluation results
+# - temporary files
+# - local build artifacts
+#
+# Intentional project fixtures, synthetic sample data, schemas, prompts,
+# source code, tests, and documented sample outputs should remain tracked.
+#
+# ==============================================================================
+
+
+# ==============================================================================
+# ENVIRONMENT VARIABLES AND SECRETS
+# ==============================================================================
+
+# Local environment files may contain credentials or machine-specific values.
+.env
+.env.*
+*.env
+
+# Keep the public example configuration tracked.
+!.env.example
+
+# Common local secret/config variants.
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Private key and certificate material must not be committed.
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Common credential files.
+credentials.json
+service-account.json
+secrets.json
+secrets.yaml
+secrets.yml
+
+
+# ==============================================================================
+# PYTHON BYTECODE AND CACHE
+# ==============================================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Compiled extension modules.
+*.so
+
+
+# ==============================================================================
+# PYTHON VIRTUAL ENVIRONMENTS
+# ==============================================================================
+
+.venv/
+venv/
+env/
+ENV/
+venv.bak/
+env.bak/
+
+
+# ==============================================================================
+# PYTHON PACKAGING AND BUILD OUTPUT
+# ==============================================================================
+
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+
+# ==============================================================================
+# PYTHON TOOLING
+# ==============================================================================
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyright
+.pyright/
+
+# Ruff
+.ruff_cache/
+
+# Pyre
+.pyre/
+
+# Pytype
+.pytype/
+
+# Cython
+cython_debug/
+
+
+# ==============================================================================
+# TESTING
+# ==============================================================================
+
+# pytest
+.pytest_cache/
+
+# Generic test cache/output.
+.testmondata
+test-results/
+test-output/
+
+# Tox and Nox.
+.tox/
+.nox/
+
+# Hypothesis.
+.hypothesis/
+
+
+# ==============================================================================
+# COVERAGE
+# ==============================================================================
+
+.coverage
+.coverage.*
+coverage.xml
+coverage.json
+htmlcov/
+
+*.cover
+*.py,cover
+
+# Coverage cache.
+.coverage_cache/
+
+
+# ==============================================================================
+# APPLICATION RUNTIME LOGS
+# ==============================================================================
+
+*.log
+*.log.*
+
+logs/
+runtime-logs/
+
+# Rotated logs.
+*.log.[0-9]*
+*.log.gz
+
+
+# ==============================================================================
+# IMPORTANT — PROJECT SAMPLE LOGS
+# ==============================================================================
+#
+# Project 001 intentionally stores synthetic .log files under sample-data/.
+#
+# The global *.log rule above would normally ignore them, so the rules below
+# explicitly keep the project fixtures tracked.
+#
+# These files must contain synthetic training/testing data only.
+# Never place real private CI logs in sample-data/.
+#
+# ==============================================================================
+
+!sample-data/
+!sample-data/**/*.log
+
+
+# ==============================================================================
+# EVALUATION OUTPUT
+# ==============================================================================
+#
+# The evaluation source files remain tracked:
+#
+#   evaluations/evaluation-dataset.json
+#   evaluations/expected-behavior.md
+#   evaluations/accuracy-evaluation.md
+#   evaluations/groundedness-evaluation.md
+#   evaluations/safety-evaluation.md
+#   evaluations/evaluation-runner.py
+#
+# Locally generated evaluation artifacts should not be committed unless they
+# are deliberately sanitized and promoted into documented project examples.
+#
+# ==============================================================================
+
+evaluation-results/
+evaluations/results/
+evaluations/output/
+evaluations/.results/
+
+
+# ==============================================================================
+# PROJECT EVIDENCE — GENERATED CONTENT
+# ==============================================================================
+#
+# The evidence/ directory itself is part of the project and must remain tracked.
+#
+# Its README, checklist, .gitkeep files, and intentionally provided sample
+# outputs remain version controlled.
+#
+# Learner-generated screenshots, terminal captures, test results, and runtime
+# logs are ignored by default because they may contain machine-specific or
+# sensitive information.
+#
+# ==============================================================================
+
+# Generated screenshots.
+evidence/screenshots/*
+!evidence/screenshots/.gitkeep
+
+# Generated terminal captures.
+evidence/terminal-output/*
+!evidence/terminal-output/.gitkeep
+
+# Generated test/evaluation results.
+evidence/test-results/*
+!evidence/test-results/.gitkeep
+
+# Generated runtime log evidence.
+evidence/logs/*
+!evidence/logs/.gitkeep
+
+# IMPORTANT:
+#
+# Do not ignore evidence/sample-output/.
+#
+# The following sanitized project examples are intentionally tracked:
+#
+#   evidence/sample-output/successful-triage.json
+#   evidence/sample-output/fallback-triage.json
+#   evidence/sample-output/rejected-output.json
+
+
+# ==============================================================================
+# LOCAL APPLICATION OUTPUT
+# ==============================================================================
+
+output/
+outputs/
+tmp/
+temp/
+.cache/
+
+*.tmp
+*.temp
+
+
+# ==============================================================================
+# PID AND RUNTIME STATE
+# ==============================================================================
+
+*.pid
+*.pid.lock
+*.seed
+
+run/
+runtime/
+
+
+# ==============================================================================
+# DATABASE FILES
+# ==============================================================================
+#
+# Project 001 does not currently require a database, but local database files
+# should not be committed if one is used experimentally.
+#
+# ==============================================================================
+
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+
+# ==============================================================================
+# NOTEBOOKS
+# ==============================================================================
+
+.ipynb_checkpoints/
+
+
+# ==============================================================================
+# JUPYTER / IPYTHON
+# ==============================================================================
+
+.ipython/
+.profile_default/
+
+
+# ==============================================================================
+# IDE — VISUAL STUDIO CODE
+# ==============================================================================
+
+.vscode/
+
+# If shared VS Code configuration is intentionally added later, individual
+# files can be explicitly unignored rather than committing local editor state.
+
+
+# ==============================================================================
+# IDE — JETBRAINS
+# ==============================================================================
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+
+# ==============================================================================
+# IDE — OTHER EDITORS
+# ==============================================================================
+
+.spyproject/
+.spyderproject
+.spyproject
+
+.ropeproject/
+
+.history/
+
+
+# ==============================================================================
+# OPERATING SYSTEM — macOS
+# ==============================================================================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+Icon?
+
+._*
+
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+
+# ==============================================================================
+# OPERATING SYSTEM — WINDOWS
+# ==============================================================================
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+*.stackdump
+
+[Dd]esktop.ini
+
+$RECYCLE.BIN/
+
+
+# ==============================================================================
+# OPERATING SYSTEM — LINUX
+# ==============================================================================
+
+*~
+
+.directory
+.Trash-*
+
+
+# ==============================================================================
+# EDITOR TEMPORARY FILES
+# ==============================================================================
+
+*.swp
+*.swo
+*.swn
+
+*.bak
+*.backup
+
+*.orig
+*.rej
+
+*~
+.#*
+\#*\#
+
+
+# ==============================================================================
+# DOCKER — LOCAL OVERRIDES
+# ==============================================================================
+#
+# Keep the project files tracked:
+#
+#   docker/Dockerfile
+#   docker/docker-compose.yml
+#
+# Ignore machine-specific Compose overrides if created locally.
+#
+# ==============================================================================
+
+docker-compose.override.yml
+docker/docker-compose.override.yml
+
+
+# ==============================================================================
+# LOCAL CONTAINER / DEVELOPMENT STATE
+# ==============================================================================
+
+.docker/
+docker-data/
+container-data/
+
+
+# ==============================================================================
+# LOCAL TOOL CACHES
+# ==============================================================================
+
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+
+# ==============================================================================
+# PROFILING AND PERFORMANCE OUTPUT
+# ==============================================================================
+
+*.prof
+*.lprof
+profile-results/
+benchmark-results/
+
+
+# ==============================================================================
+# GENERATED REPORTS
+# ==============================================================================
+
+reports/
+generated-reports/
+
+junit.xml
+junit-*.xml
+
+
+# ==============================================================================
+# LOCAL SECURITY SCANNER OUTPUT
+# ==============================================================================
+
+security-results/
+security-reports/
+scan-results/
+
+
+# ==============================================================================
+# LOCAL AI / MODEL OUTPUT
+# ==============================================================================
+#
+# Ad-hoc model responses may contain operational input or sensitive context.
+# Keep them out of version control unless they have been deliberately
+# sanitized and added as official project fixtures.
+#
+# ==============================================================================
+
+ai-output/
+model-output/
+model-responses/
+prompt-debug/
+
+
+# ==============================================================================
+# LOCAL HTTP / API DEBUGGING
+# ==============================================================================
+
+.http/
+http-client.env.json
+http-client.private.env.json
+
+
+# ==============================================================================
+# LOCAL SHELL HISTORY
+# ==============================================================================
+
+.bash_history
+.zsh_history
+.python_history
+
+
+# ==============================================================================
+# LOCAL DEVELOPMENT CONFIGURATION
+# ==============================================================================
+
+local-config/
+config.local.*
+*.local.json
+*.local.yaml
+*.local.yml
+*.local.toml
+
+
+# ==============================================================================
+# ARCHIVES
+# ==============================================================================
+
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+
+# ==============================================================================
+# GENERATED DOCUMENTATION OUTPUT
+# ==============================================================================
+
+site/
+docs/_build/
+
+
+# ==============================================================================
+# KEEP PROJECT PLACEHOLDERS
+# ==============================================================================
+#
+# .gitkeep files are intentionally used in empty evidence directories so the
+# public repository preserves the expected structure.
+#
+# ==============================================================================
+
+!.gitkeep
+!**/.gitkeep
+
+
+# ==============================================================================
+# PROJECT 001 FILES THAT MUST REMAIN TRACKED
+# ==============================================================================
+#
+# These explicit rules protect important public project files from broader
+# ignore patterns above.
+#
+# ==============================================================================
+
+!.env.example
+
+!sample-data/
+!sample-data/**
+
+!evidence/
+!evidence/README.md
+!evidence/EVIDENCE-CHECKLIST.md
+!evidence/sample-output/
+!evidence/sample-output/**
+
+!prompts/
+!prompts/**
+
+!schemas/
+!schemas/**
+
+!evaluations/
+!evaluations/README.md
+!evaluations/evaluation-dataset.json
+!evaluations/expected-behavior.md
+!evaluations/accuracy-evaluation.md
+!evaluations/groundedness-evaluation.md
+!evaluations/safety-evaluation.md
+!evaluations/evaluation-runner.py
+
+
+# ==============================================================================
+# FINAL PUBLIC-REPOSITORY SAFETY REMINDER
+# ==============================================================================
+#
+# .gitignore is a safety net, not a security control.
+#
+# Before every push, review:
+#
+#   git status
+#   git diff --staged
+#
+# Confirm that you are not committing:
+#
+# - .env
+# - API keys
+# - access tokens
+# - passwords
+# - private keys
+# - real CI/CD logs
+# - private source code
+# - internal infrastructure information
+# - unsanitized screenshots
+# - unsanitized terminal output
+# - model responses containing sensitive context
+#
+# If a secret has already been committed, adding it to .gitignore does not
+# remove it from Git history.
+#
+# Revoke or rotate the exposed credential and follow the appropriate
+# repository history-remediation process.
+#
+# ==============================================================================
