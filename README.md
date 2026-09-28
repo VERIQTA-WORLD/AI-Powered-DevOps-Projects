@@ -4,341 +4,1064 @@
 <img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/06dafafd-b4a2-4f49-9d8c-3e4f7a2c9172" />
 
 
-Build production-minded systems that apply artificial intelligence to software delivery, cloud operations, platform engineering, site reliability, security, observability, infrastructure, and cost management.
+> Build AI-powered systems for real DevOps, cloud, SRE, platform engineering, security, observability, infrastructure, reliability, and FinOps problems.
 
-This repository contains 100 hands-on projects based on problems engineers encounter in real environments. Each project goes beyond a short tool demonstration. You will design the system, write the code, provision the infrastructure, integrate delivery pipelines, secure the AI workflow, observe its behavior, test failure conditions, recover safely, and document the result.
+This repository contains **100 hands-on engineering projects** designed to help you learn by building systems based on problems engineers encounter in real environments.
 
-The goal is not to add an AI chatbot to ordinary DevOps tasks. The goal is to learn where AI provides useful decision support, where deterministic engineering must remain in control, and how to build systems that can be trusted in production.
+You will not just connect an AI API to a script and call it an AI project.
 
-## Who this repository is for
+You will learn the engineering concepts behind each system, design the architecture, build the implementation, test it, break it safely, investigate failures, recover it, secure it, observe it, and document what you built.
 
-These projects are designed for:
+By the time you complete a project, you should be able to explain:
 
-- DevOps engineers
-- Site reliability engineers
-- Platform engineers
-- Cloud engineers
-- Infrastructure engineers
-- DevSecOps engineers
-- Systems engineers
-- Software engineers moving into cloud operations
-- Students building practical AI and DevOps portfolios
+- **What you built**
+- **What problem it solves**
+- **How the architecture works**
+- **Why you made your engineering decisions**
+- **Where AI is used**
+- **Where deterministic engineering remains in control**
+- **How you tested the system**
+- **How the system fails**
+- **How you recover it**
+- **What you would change before production**
 
-You do not need to complete all 100 projects. Choose a learning path that matches your current role, experience, and career direction.
+---
 
-## What makes these projects different
+## Repository Navigation
 
-Every project begins with a realistic engineering problem and leads to a complete, demonstrable result.
+- [Project Catalogue](#project-catalogue)
+- [Learning Paths](docs/learning-paths.md)
+- [Project Standards](PROJECT-STANDARDS.md)
+- [Portfolio Guidance](docs/portfolio-guidance.md)
+- [Submission Guidelines](docs/submission-guidelines.md)
+- [AI Safety Standards](docs/ai-safety-standards.md)
+- [Security Policy](SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
+- [Roadmap](ROADMAP.md)
+- [License](LICENSE)
 
-Depending on its scope, a project may include:
+---
 
-1. A realistic engineering problem and clearly defined users
-2. A complete functioning system
-3. Reproducible infrastructure as code
-4. CI/CD integration
-5. Security controls and documented trust boundaries
-6. AI safety controls and structured output validation
-7. Logs, metrics, traces, dashboards, and alerts
-8. Controlled failure injection, recovery, and verification
-9. Cost, latency, capacity, and performance analysis
-10. Automated tests and measurable acceptance criteria
-11. A production-readiness review
-12. Interview questions and portfolio guidance
+# What You Will Do Here
 
-Not every project needs every component. The implementation must include every component required to solve the stated problem safely and credibly.
+Each project places you inside an engineering problem.
 
-## Engineering principles
+A CI pipeline is failing.
 
-The repository follows several non-negotiable principles:
+A Kubernetes workload will not start.
 
-- Verified evidence and AI-generated conclusions must remain clearly separated.
-- Model output must be treated as untrusted until it passes validation.
-- Operational systems must continue safely when the model is unavailable.
-- Destructive or high-impact actions must require explicit authorization.
-- Agents and automation must use the minimum permissions required.
-- Sensitive data must be removed or protected before it reaches an external model.
-- Every automated action must produce an auditable record.
-- Failure recovery must include verification, not only remediation.
-- Cost, security, reliability, and maintainability are part of the design.
+Infrastructure has drifted from its approved configuration.
 
-## Project levels
+An incident is generating hundreds of alerts.
 
-| Level | Description |
-| --- | --- |
-| Foundation | A focused project that teaches essential practices while producing a useful system. |
-| Intermediate | A multi-component project with deployment, testing, security, and operational requirements. |
-| Advanced | A production-oriented project involving distributed systems, governance, scale, or controlled automation. |
-| Capstone | An end-to-end platform that combines multiple DevOps disciplines and requires defensible engineering decisions. |
+Cloud spending suddenly increases.
 
-## How to use this repository
+A deployment succeeds, but production becomes unhealthy.
 
-1. Choose a project from the catalogue or select a recommended learning path.
-2. Open the project folder and read its `README.md` before installing anything.
-3. Complete the project-specific prerequisites and environment checks.
-4. Use the starter project to build the system through the numbered labs.
-5. Compare each milestone with the documented expected result.
-6. Complete the failure exercises and verify recovery.
-7. Run the automated tests and acceptance checks.
-8. Review the reference implementation only after attempting the work.
-9. Complete the production-readiness review.
-10. Document the finished project in your own repository and prepare to explain your decisions.
+An AI-assisted operational system receives unsafe input.
 
+A critical service needs to recover from infrastructure failure.
 
-## Project catalogue
+Your job is not simply to follow commands.
 
-### Track 1: AI for CI/CD and software delivery
+You will learn enough about the problem to understand it, build a solution, verify the result, investigate failures, and make engineering decisions of your own.
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 001 | [AI-Powered CI Failure Triage Engine](projects/001-ai-powered-ci-failure-triage-engine/README.md) | Foundation | Analyze failed pipeline logs, identify evidence, classify likely causes, redact secrets, and produce validated remediation guidance. |
-| 002 | [Intelligent Flaky Test Detection Service](projects/002-intelligent-flaky-test-detection-service/README.md) | Intermediate | Detect nondeterministic tests from historical CI runs, calculate confidence scores, and recommend quarantine or investigation without hiding genuine failures. |
-| 003 | [Pull Request Risk Scoring Gate](projects/003-pull-request-risk-scoring-gate/README.md) | Intermediate | Evaluate code changes, ownership, dependency impact, test coverage, and deployment history before assigning a review and release risk score. |
-| 004 | [AI-Assisted Pipeline Generator with Policy Guardrails](projects/004-ai-assisted-pipeline-generator-with-policy-guardrails/README.md) | Intermediate | Generate pipeline configurations from repository evidence, validate them against schemas and policy, and test them in an isolated environment. |
-| 005 | [Deployment Log Root-Cause Correlator](projects/005-deployment-log-root-cause-correlator/README.md) | Intermediate | Correlate pipeline, deployment, application, and infrastructure events to explain why a release failed. |
-| 006 | [Release Readiness Decision Support System](projects/006-release-readiness-decision-support-system/README.md) | Advanced | Combine test results, vulnerabilities, change risk, SLO health, approvals, and rollback readiness into an evidence-based release recommendation. |
-| 007 | [CI Pipeline Performance Advisor](projects/007-ci-pipeline-performance-advisor/README.md) | Intermediate | Find slow stages, repeated work, cache misses, and runner bottlenecks, then measure the effect of approved improvements. |
-| 008 | [Build Dependency Failure Predictor](projects/008-build-dependency-failure-predictor/README.md) | Advanced | Use dependency metadata, lockfile changes, outage information, and build history to identify releases at risk of dependency-related failure. |
-| 009 | [Pipeline Configuration Drift Detector](projects/009-pipeline-configuration-drift-detector/README.md) | Intermediate | Compare approved pipeline baselines with active configurations and explain security or reliability consequences of detected drift. |
-| 010 | [Multi-Repository Release Orchestrator](projects/010-multi-repository-release-orchestrator/README.md) | Capstone | Coordinate versioning, tests, approvals, deployment order, evidence collection, rollback, and AI-assisted risk analysis across dependent services. |
+```text
+Learn
+  ↓
+Understand
+  ↓
+Design
+  ↓
+Build
+  ↓
+Verify
+  ↓
+Break
+  ↓
+Investigate
+  ↓
+Recover
+  ↓
+Improve
+  ↓
+Document
+  ↓
+Explain
+```
 
-### Track 2: AI for incident response and SRE
+---
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 011 | [Incident Evidence Collection Assistant](projects/011-incident-evidence-collection-assistant/README.md) | Foundation | Gather bounded logs, metrics, traces, deployment events, and configuration changes into a timestamped incident evidence package. |
-| 012 | [Alert Deduplication and Incident Clustering Service](projects/012-alert-deduplication-and-incident-clustering-service/README.md) | Intermediate | Group related alerts into incidents using deterministic signals and explainable similarity scoring. |
-| 013 | [SLO Breach Investigation Assistant](projects/013-slo-breach-investigation-assistant/README.md) | Intermediate | Trace an SLO breach to affected services, recent changes, resource pressure, and dependency failures without claiming an unverified root cause. |
-| 014 | [Incident Timeline Reconstruction Engine](projects/014-incident-timeline-reconstruction-engine/README.md) | Intermediate | Normalize events from multiple systems, handle clock differences, and create an evidence-linked incident timeline. |
-| 015 | [Runbook Retrieval and Recommendation Service](projects/015-runbook-retrieval-and-recommendation-service/README.md) | Intermediate | Retrieve approved runbook steps based on incident context while enforcing version, ownership, authorization, and freshness controls. |
-| 016 | [Human-in-the-Loop Incident Commander Copilot](projects/016-human-in-the-loop-incident-commander-copilot/README.md) | Advanced | Maintain incident state, surface missing evidence, track decisions, prepare updates, and require humans to approve operational actions. |
-| 017 | [Post-Incident Review Drafting System](projects/017-post-incident-review-drafting-system/README.md) | Intermediate | Convert a verified incident timeline into a blameless review draft with contributing factors, evidence links, and action-item validation. |
-| 018 | [Recurring Incident Pattern Detector](projects/018-recurring-incident-pattern-detector/README.md) | Advanced | Identify repeated failure signatures across incident records and rank preventive engineering work by frequency, impact, and confidence. |
-| 019 | [On-Call Handover Intelligence Service](projects/019-on-call-handover-intelligence-service/README.md) | Intermediate | Produce a concise shift handover from active alerts, recent changes, degraded SLOs, open incidents, and unfinished actions. |
-| 020 | [Enterprise Incident Intelligence Platform](projects/020-enterprise-incident-intelligence-platform/README.md) | Capstone | Combine ingestion, correlation, retrieval, timelines, communications, runbooks, audit trails, and safe action recommendations in one incident system. |
+# Who This Repository Is For
 
-### Track 3: AI for observability and AIOps
+This repository is designed for you if you are learning or working in:
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 021 | [Telemetry Quality Auditor](projects/021-telemetry-quality-auditor/README.md) | Foundation | Detect missing labels, broken trace propagation, inconsistent service names, high-cardinality fields, and unsafe sensitive data in telemetry. |
-| 022 | [Log Pattern Discovery and Noise Reduction Service](projects/022-log-pattern-discovery-and-noise-reduction-service/README.md) | Intermediate | Cluster recurring log patterns, preserve rare events, and propose filters with measurable false-suppression limits. |
-| 023 | [Metric Anomaly Detection with Seasonal Baselines](projects/023-metric-anomaly-detection-with-seasonal-baselines/README.md) | Intermediate | Detect meaningful deviations while accounting for daily, weekly, and release-related patterns. |
-| 024 | [Distributed Trace Bottleneck Investigator](projects/024-distributed-trace-bottleneck-investigator/README.md) | Intermediate | Analyze spans and service dependencies to find latency concentration, retries, queue delay, and downstream contention. |
-| 025 | [Observability Query Assistant](projects/025-observability-query-assistant/README.md) | Intermediate | Translate operational questions into read-only PromQL, LogQL, or trace queries, validate syntax, and restrict expensive or unsafe queries. |
-| 026 | [Service Health Summary Generator](projects/026-service-health-summary-generator/README.md) | Foundation | Combine golden signals, SLOs, deployments, incidents, and dependency health into an evidence-linked operational summary. |
-| 027 | [Cardinality and Telemetry Cost Controller](projects/027-cardinality-and-telemetry-cost-controller/README.md) | Advanced | Detect cardinality explosions, estimate cost impact, and recommend safer attribute or sampling policies. |
-| 028 | [Adaptive Trace Sampling Controller](projects/028-adaptive-trace-sampling-controller/README.md) | Advanced | Adjust sampling using errors, latency, service importance, and incident state while protecting diagnostic coverage and budgets. |
-| 029 | [Observability Coverage Gap Analyzer](projects/029-observability-coverage-gap-analyzer/README.md) | Intermediate | Compare service architecture with emitted telemetry and identify blind spots before production incidents expose them. |
-| 030 | [Unified AIOps Correlation Platform](projects/030-unified-aiops-correlation-platform/README.md) | Capstone | Correlate logs, metrics, traces, changes, alerts, and topology while preserving evidence, uncertainty, and operator control. |
+- DevOps Engineering
+- Site Reliability Engineering
+- Platform Engineering
+- Cloud Engineering
+- Infrastructure Engineering
+- DevSecOps
+- Systems Engineering
+- Kubernetes
+- Infrastructure as Code
+- Observability
+- FinOps
+- Reliability Engineering
+- AI for IT Operations
+- Software Engineering with cloud or operations responsibilities
 
-### Track 4: AI for Kubernetes and cloud operations
+You can also use these projects if you are:
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 031 | [Kubernetes Workload Failure Investigator](projects/031-kubernetes-workload-failure-investigator/README.md) | Foundation | Diagnose common Pending, CrashLoopBackOff, ImagePullBackOff, probe, scheduling, and resource failures from cluster evidence. |
-| 032 | [Kubernetes Manifest Safety Reviewer](projects/032-kubernetes-manifest-safety-reviewer/README.md) | Intermediate | Review manifests for schema errors, insecure settings, resource omissions, availability risks, and policy violations before deployment. |
-| 033 | [Kubernetes Event Correlation Engine](projects/033-kubernetes-event-correlation-engine/README.md) | Intermediate | Connect events, pod states, controller activity, node pressure, and releases into a structured failure explanation. |
-| 034 | [Resource Request and Limit Advisor](projects/034-resource-request-and-limit-advisor/README.md) | Advanced | Recommend Kubernetes CPU and memory settings from historical usage while accounting for startup, peaks, reliability, and cost. |
-| 035 | [Cluster Capacity and Scheduling Forecaster](projects/035-cluster-capacity-and-scheduling-forecaster/README.md) | Advanced | Predict capacity pressure, unschedulable workloads, autoscaling constraints, and upgrade headroom. |
-| 036 | [Safe Kubernetes Remediation Assistant](projects/036-safe-kubernetes-remediation-assistant/README.md) | Advanced | Propose and simulate bounded remediations, require approval, execute through least-privilege workflows, and verify recovery. |
-| 037 | [Multi-Cluster Configuration Drift Intelligence](projects/037-multi-cluster-configuration-drift-intelligence/README.md) | Advanced | Detect and explain drift across clusters, environments, policies, versions, and add-on configurations. |
-| 038 | [Kubernetes Upgrade Risk Analyzer](projects/038-kubernetes-upgrade-risk-analyzer/README.md) | Advanced | Examine API removals, add-on compatibility, workload constraints, disruption budgets, and rollback plans before an upgrade. |
-| 039 | [Cloud Resource Misconfiguration Investigator](projects/039-cloud-resource-misconfiguration-investigator/README.md) | Intermediate | Analyze cloud inventory and policy evidence to identify unsafe, unavailable, or inconsistent resources across accounts. |
-| 040 | [AI-Assisted Cloud Operations Control Plane](projects/040-ai-assisted-cloud-operations-control-plane/README.md) | Capstone | Provide evidence-driven investigation and approval-gated operations across Kubernetes and cloud resources with complete auditability. |
+- preparing for your first engineering role
+- moving into DevOps, cloud, SRE, or platform engineering
+- building a technical GitHub portfolio
+- preparing for technical interviews
+- learning how AI fits into engineering workflows
+- moving beyond isolated tutorials
+- strengthening your production engineering skills
 
-### Track 5: AI for infrastructure as code and configuration
+You do not need to complete all 100 projects.
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 041 | [Terraform Plan Risk Explainer](projects/041-terraform-plan-risk-explainer/README.md) | Foundation | Parse Terraform plans, identify impactful changes, and produce a structured explanation that distinguishes facts from recommendations. |
-| 042 | [Infrastructure Drift Detection and Triage Service](projects/042-infrastructure-drift-detection-and-triage-service/README.md) | Intermediate | Detect unmanaged changes, determine likely sources, rank risk, and guide safe reconciliation. |
-| 043 | [Infrastructure Policy Remediation Assistant](projects/043-infrastructure-policy-remediation-assistant/README.md) | Intermediate | Explain policy failures and generate minimal candidate patches that must pass policy, tests, and human review. |
-| 044 | [Cloud Architecture to Terraform Generator](projects/044-cloud-architecture-to-terraform-generator/README.md) | Advanced | Convert an approved architecture specification into modular Terraform with validation, tests, cost estimates, and security controls. |
-| 045 | [Configuration Change Blast-Radius Analyzer](projects/045-configuration-change-blast-radius-analyzer/README.md) | Advanced | Map proposed configuration changes to services, environments, dependencies, owners, and recovery procedures. |
-| 046 | [Ansible Failure Diagnosis Engine](projects/046-ansible-failure-diagnosis-engine/README.md) | Intermediate | Analyze inventory, playbook, connectivity, privilege, idempotency, and module errors across managed hosts. |
-| 047 | [GitOps Reconciliation Intelligence Service](projects/047-gitops-reconciliation-intelligence-service/README.md) | Intermediate | Explain reconciliation failures, source drift, health-check errors, and unsafe manual changes in GitOps environments. |
-| 048 | [Infrastructure Module Quality Scoring Platform](projects/048-infrastructure-module-quality-scoring-platform/README.md) | Advanced | Score reusable modules for tests, documentation, security, versioning, portability, maintenance, and operational safety. |
-| 049 | [Environment Parity Analyzer](projects/049-environment-parity-analyzer/README.md) | Intermediate | Compare development, staging, and production infrastructure to expose differences that could invalidate testing or recovery assumptions. |
-| 050 | [Governed Infrastructure Change Platform](projects/050-governed-infrastructure-change-platform/README.md) | Capstone | Combine plan analysis, policy, cost, drift, approvals, deployment evidence, rollback, and post-change verification. |
+Choose the projects that support the engineer you want to become.
 
-### Track 6: AI for DevSecOps and software supply chains
+---
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 051 | [Vulnerability Triage and Remediation Prioritizer](projects/051-vulnerability-triage-and-remediation-prioritizer/README.md) | Foundation | Rank findings using exploitability, reachability, asset criticality, exposure, and compensating controls instead of severity alone. |
-| 052 | [Secret Exposure Investigation and Response System](projects/052-secret-exposure-investigation-and-response-system/README.md) | Intermediate | Detect exposed secrets, trace affected assets, coordinate rotation, preserve evidence, and verify containment. |
-| 053 | [Software Bill of Materials Risk Intelligence Service](projects/053-software-bill-of-materials-risk-intelligence-service/README.md) | Intermediate | Ingest SBOMs, map vulnerable components to deployed workloads, and prioritize verified exposure. |
-| 054 | [Container Image Trust and Risk Gate](projects/054-container-image-trust-and-risk-gate/README.md) | Intermediate | Validate provenance, signatures, packages, malware results, configuration, and policy before an image can be promoted. |
-| 055 | [CI/CD Supply-Chain Attack Detector](projects/055-ci-cd-supply-chain-attack-detector/README.md) | Advanced | Detect suspicious pipeline edits, dependency substitution, artifact tampering, runner misuse, and unauthorized release activity. |
-| 056 | [Infrastructure Threat Modeling Assistant](projects/056-infrastructure-threat-modeling-assistant/README.md) | Intermediate | Build and validate threat models from architecture evidence while requiring engineers to approve assets, flows, boundaries, and risks. |
-| 057 | [Prompt Injection Defense Gateway for DevOps Agents](projects/057-prompt-injection-defense-gateway-for-devops-agents/README.md) | Advanced | Detect untrusted instructions in logs, tickets, repositories, and tool output before they influence an operational AI agent. |
-| 058 | [DevOps Agent Permission and Tool-Use Firewall](projects/058-devops-agent-permission-and-tool-use-firewall/README.md) | Advanced | Enforce identity, scoped tools, argument validation, approvals, rate limits, and immutable audit records around agent actions. |
-| 059 | [Compliance Evidence Collection and Validation Platform](projects/059-compliance-evidence-collection-and-validation-platform/README.md) | Advanced | Continuously gather control evidence, test freshness and completeness, and map results to approved compliance requirements. |
-| 060 | [Secure AI-Augmented Software Factory](projects/060-secure-ai-augmented-software-factory/README.md) | Capstone | Integrate source, build, test, signing, provenance, policy, deployment, runtime evidence, and guarded AI assistance. |
+# How the Learning Experience Works
 
-### Track 7: AI for platform engineering and developer experience
+These are not copy-and-paste projects.
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 061 | [Repository Onboarding Assistant](projects/061-repository-onboarding-assistant/README.md) | Foundation | Inspect a repository and generate verified setup guidance, dependency checks, architecture entry points, and first-contribution steps. |
-| 062 | [Service Catalogue Metadata Quality Agent](projects/062-service-catalogue-metadata-quality-agent/README.md) | Intermediate | Detect incomplete ownership, lifecycle, dependency, documentation, SLO, and operational metadata in a service catalogue. |
-| 063 | [Golden Path Recommendation Engine](projects/063-golden-path-recommendation-engine/README.md) | Intermediate | Recommend an approved service template from workload requirements, compliance needs, availability targets, and team constraints. |
-| 064 | [Self-Service Environment Provisioning Portal](projects/064-self-service-environment-provisioning-portal/README.md) | Advanced | Provision policy-compliant environments through templates, approvals, quotas, expiration, observability, and automated cleanup. |
-| 065 | [Developer Documentation Freshness Monitor](projects/065-developer-documentation-freshness-monitor/README.md) | Intermediate | Test commands, links, API examples, version claims, and architecture references to identify documentation drift. |
-| 066 | [Platform Support Ticket Triage Service](projects/066-platform-support-ticket-triage-service/README.md) | Intermediate | Categorize platform tickets, retrieve verified guidance, identify duplicates, route ownership, and measure resolution quality. |
-| 067 | [Internal Developer Platform Adoption Analyzer](projects/067-internal-developer-platform-adoption-analyzer/README.md) | Advanced | Measure golden-path adoption, friction, lead time, failure rates, support demand, and developer feedback without misleading vanity metrics. |
-| 068 | [API and Service Dependency Discovery Platform](projects/068-api-and-service-dependency-discovery-platform/README.md) | Advanced | Build a continuously updated service dependency graph from code, runtime telemetry, deployment data, and catalogue metadata. |
-| 069 | [Ephemeral Preview Environment Manager](projects/069-ephemeral-preview-environment-manager/README.md) | Advanced | Create, secure, observe, budget, expire, and destroy per-change environments with AI-assisted diagnostics. |
-| 070 | [AI-Native Internal Developer Platform](projects/070-ai-native-internal-developer-platform/README.md) | Capstone | Combine a service catalogue, golden paths, self-service infrastructure, documentation, policy, scorecards, and guarded operational assistance. |
+You will receive guidance, explanations, commands, architecture diagrams, expected results, troubleshooting guidance, tests, failure scenarios, and reference material.
 
-### Track 8: AI for FinOps, capacity, and performance
+But the amount of guidance changes as projects become more advanced.
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 071 | [Cloud Cost Anomaly Investigation Service](projects/071-cloud-cost-anomaly-investigation-service/README.md) | Foundation | Detect unusual spending, attribute changes to resources or deployments, and produce evidence-based investigation reports. |
-| 072 | [Idle and Orphaned Resource Discovery Engine](projects/072-idle-and-orphaned-resource-discovery-engine/README.md) | Intermediate | Find unused infrastructure, verify ownership and dependencies, estimate savings, and use approval-based cleanup workflows. |
-| 073 | [Kubernetes Cost Allocation and Waste Advisor](projects/073-kubernetes-cost-allocation-and-waste-advisor/README.md) | Intermediate | Allocate cluster cost to teams and services, detect waste, and recommend changes without ignoring reliability requirements. |
-| 074 | [Workload Rightsizing Recommendation System](projects/074-workload-rightsizing-recommendation-system/README.md) | Advanced | Recommend instance, database, and container capacity using demand patterns, performance limits, commitments, and resilience targets. |
-| 075 | [AI Workload Token and Inference Cost Governor](projects/075-ai-workload-token-and-inference-cost-governor/README.md) | Intermediate | Track model usage, token cost, cache efficiency, latency, user attribution, budgets, and abnormal consumption. |
-| 076 | [Capacity Forecasting and Procurement Advisor](projects/076-capacity-forecasting-and-procurement-advisor/README.md) | Advanced | Forecast compute, storage, database, and accelerator requirements with uncertainty bands and scenario comparison. |
-| 077 | [Performance Regression Detection Gate](projects/077-performance-regression-detection-gate/README.md) | Intermediate | Compare releases using load-test and production signals, then block or warn on statistically meaningful regressions. |
-| 078 | [Cloud Commitment Risk Analyzer](projects/078-cloud-commitment-risk-analyzer/README.md) | Advanced | Evaluate reserved capacity or savings commitments against forecast demand, growth uncertainty, and architecture changes. |
-| 079 | [Cost-Aware Multi-Region Placement Advisor](projects/079-cost-aware-multi-region-placement-advisor/README.md) | Advanced | Compare latency, resilience, data rules, service availability, transfer charges, and operational cost across deployment options. |
-| 080 | [Autonomous FinOps Decision Support Platform](projects/080-autonomous-finops-decision-support-platform/README.md) | Capstone | Unite allocation, anomaly detection, forecasting, rightsizing, budgets, approvals, savings verification, and executive reporting. |
+## Foundation
 
-### Track 9: AI for reliability, resilience, and recovery
+You receive detailed explanations and guided implementation.
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 081 | [Backup Integrity and Restore Verification System](projects/081-backup-integrity-and-restore-verification-system/README.md) | Foundation | Discover backups, test recoverability, measure restore time, validate data integrity, and report unprotected assets. |
-| 082 | [Disaster Recovery Readiness Auditor](projects/082-disaster-recovery-readiness-auditor/README.md) | Intermediate | Validate recovery objectives, dependencies, runbooks, credentials, replicas, backups, exercises, and evidence. |
-| 083 | [Chaos Experiment Design Assistant](projects/083-chaos-experiment-design-assistant/README.md) | Intermediate | Generate bounded experiments from service risks, define safeguards and hypotheses, and reject unsafe test conditions. |
-| 084 | [Automated Failure Injection Laboratory](projects/084-automated-failure-injection-laboratory/README.md) | Advanced | Provision an isolated environment, inject controlled faults, collect telemetry, guide recovery, and produce reliability evidence. |
-| 085 | [Dependency Failure Impact Simulator](projects/085-dependency-failure-impact-simulator/README.md) | Advanced | Model service, queue, database, identity, network, and third-party failures to estimate propagation and degraded modes. |
-| 086 | [Auto-Scaling Policy Validation System](projects/086-auto-scaling-policy-validation-system/README.md) | Intermediate | Test scaling policies against traffic bursts, slow dependencies, quotas, cooldowns, cost limits, and failure scenarios. |
-| 087 | [Multi-Region Failover Decision Assistant](projects/087-multi-region-failover-decision-assistant/README.md) | Advanced | Evaluate health, replication, data loss risk, traffic controls, capacity, and approvals before recommending failover. |
-| 088 | [Resilience Regression Detection Pipeline](projects/088-resilience-regression-detection-pipeline/README.md) | Advanced | Detect when application or infrastructure changes weaken redundancy, recovery, graceful degradation, or failure isolation. |
-| 089 | [Production Recovery Verification Engine](projects/089-production-recovery-verification-engine/README.md) | Advanced | Confirm that services, data, queues, integrations, security controls, and SLOs have recovered after remediation. |
-| 090 | [Intelligent Resilience Engineering Platform](projects/090-intelligent-resilience-engineering-platform/README.md) | Capstone | Manage risk discovery, experiment design, fault injection, recovery evidence, readiness scoring, and preventive work. |
+```text
+Learn → Follow → Build → Verify
+```
 
-### Track 10: Enterprise AI operations capstones
+## Intermediate
 
-| ID | Project | Level | System you will build |
-| --- | --- | --- | --- |
-| 091 | [Model Gateway for Enterprise DevOps Tools](projects/091-model-gateway-for-enterprise-devops-tools/README.md) | Advanced | Provide one governed endpoint for model routing, authentication, quotas, redaction, caching, policy, fallback, and audit logs. |
-| 092 | [LLM Evaluation Pipeline for Operational Assistants](projects/092-llm-evaluation-pipeline-for-operational-assistants/README.md) | Advanced | Test accuracy, groundedness, refusal behavior, prompt-injection resistance, schema compliance, latency, and cost before release. |
-| 093 | [DevOps Knowledge Retrieval Platform](projects/093-devops-knowledge-retrieval-platform/README.md) | Advanced | Build a permission-aware retrieval system over runbooks, architecture records, incidents, repositories, and service metadata. |
-| 094 | [AI Agent Sandbox and Execution Broker](projects/094-ai-agent-sandbox-and-execution-broker/README.md) | Advanced | Isolate agent-generated commands, validate intent and arguments, restrict network and filesystem access, and preserve execution evidence. |
-| 095 | [Multi-Agent Change Review Board Simulator](projects/095-multi-agent-change-review-board-simulator/README.md) | Capstone | Use specialized agents to assess security, reliability, cost, compliance, and operability while a deterministic policy layer controls decisions. |
-| 096 | [Production Model Reliability Control Plane](projects/096-production-model-reliability-control-plane/README.md) | Capstone | Operate model-backed services with routing, fallbacks, evaluations, circuit breakers, rate limits, telemetry, and incident procedures. |
-| 097 | [Natural-Language Operations Interface with Approval Gates](projects/097-natural-language-operations-interface-with-approval-gates/README.md) | Capstone | Convert operator requests into read-only queries or proposed actions, validate every step, and require authorization for changes. |
-| 098 | [AI Governance and Audit Platform for Engineering Teams](projects/098-ai-governance-and-audit-platform-for-engineering-teams/README.md) | Capstone | Inventory models and agents, track data use, evaluate risk, record approvals, monitor controls, and produce audit evidence. |
-| 099 | [Enterprise Autonomous Remediation System](projects/099-enterprise-autonomous-remediation-system/README.md) | Capstone | Detect a narrow class of failures, gather evidence, select preapproved actions, simulate impact, obtain approval, execute, and verify recovery. |
-| 100 | [AI-Powered DevOps Operations Center](projects/100-ai-powered-devops-operations-center/README.md) | Capstone | Integrate delivery intelligence, observability, incidents, security, infrastructure, cost, guarded agents, and executive operational reporting. |
+You receive requirements, guidance, checkpoints, and troubleshooting support while making more implementation decisions yourself.
 
-## Recommended learning paths
+```text
+Understand → Build → Troubleshoot → Improve
+```
 
-### DevOps engineer
+## Advanced
 
-Begin with Projects 001, 005, 021, 031, 041, 051, 071, and 081. Continue through the CI/CD, Kubernetes, cloud operations, and infrastructure-as-code tracks.
+You make and defend architecture, security, reliability, scalability, and operational decisions.
 
-### Site reliability engineer
+```text
+Design → Implement → Test → Defend
+```
 
-Begin with Projects 011, 013, 014, 021, 024, 083, and 089. Continue through incident intelligence, observability, resilience, and recovery.
+## Capstone
 
-### Platform engineer
+You receive an engineering problem, requirements, constraints, and acceptance criteria.
 
-Begin with Projects 031, 041, 061, 062, 063, and 064. Continue toward Projects 070, 091, 093, and 097.
+You determine how the system should be built.
 
-### DevSecOps engineer
+```text
+Problem → Architecture → Engineering → Operations → Evidence
+```
 
-Begin with Projects 032, 043, 051, 052, 053, and 054. Continue toward Projects 055, 057, 058, 060, and 098.
+The goal is to gradually remove the training wheels.
 
-### Cloud or infrastructure engineer
+---
 
-Begin with Projects 039, 041, 042, 049, 071, and 081. Continue into capacity planning, multi-region design, recovery, and governed infrastructure change.
+# What Makes These Projects Different
 
-See [Learning Paths](docs/learning-paths.md) for detailed sequences and prerequisites.
+A project is not complete because an application starts successfully.
 
-## What a completed project should prove
+Depending on the system, you may need to prove that it can:
 
-A completed project repository should make it possible for another engineer to determine:
+- handle expected workloads
+- reject invalid input
+- protect sensitive information
+- survive dependency failure
+- detect unsafe AI output
+- continue safely when AI is unavailable
+- produce useful telemetry
+- enforce permissions
+- recover from controlled failures
+- verify that recovery actually worked
 
-- What problem the system solves
-- Who uses it and what decisions it supports
-- How its components and data flows are designed
-- How to create and remove the environment
-- Which findings come from deterministic evidence
-- Which findings or recommendations come from AI
-- What information can reach the model
-- Which actions the system is permitted to perform
-- Which actions require human approval
-- How the system behaves when the model is unavailable or wrong
-- How permissions, policies, schemas, and outputs are validated
-- How the system is monitored
-- How normal behavior and failure conditions were tested
-- What the system costs and how it behaves under load
-- How recovery is performed and verified
-- Whether the system is ready for production
+Projects may include:
 
-## Build and document your own version
+- realistic engineering scenarios
+- architecture design
+- working implementations
+- infrastructure as code
+- CI/CD pipelines
+- automated tests
+- security controls
+- AI guardrails
+- structured output validation
+- logs, metrics, and traces
+- dashboards and alerts
+- controlled failure injection
+- troubleshooting exercises
+- recovery verification
+- performance testing
+- cost analysis
+- policy validation
+- production-readiness reviews
+- engineering decision records
+- portfolio evidence
+- interview preparation
 
-Participants are encouraged to create a separate repository for every completed project or maintain a clearly organized portfolio repository. Your work should show your decisions, implementation, tests, failures, corrections, and final results.
+Not every project needs every component.
 
-Do not present the reference implementation as your own work. Use it to check your understanding, investigate differences, and improve your implementation.
+You will use the components required to solve the actual engineering problem.
 
-See [Submission Guidelines](docs/submission-guidelines.md) and [Portfolio Guidance](docs/portfolio-guidance.md) before publishing your work.
+---
 
-## Responsible AI use
+# How Each Project Is Organized
 
-These projects may process source code, build output, logs, infrastructure metadata, security findings, incident records, or other sensitive operational information.
+Projects share a familiar learning structure without forcing every engineering system into the same technical architecture.
+
+```text
+projects/
+└── NNN-project-name/
+    │
+    ├── README.md
+    │
+    ├── notes/
+    ├── learn/
+    ├── build/
+    ├── architecture/
+    │
+    ├── [project-specific implementation]
+    │
+    ├── tests/
+    ├── failures/
+    ├── evidence/
+    ├── portfolio/
+    │
+    └── solution/
+```
+
+## `README.md`
+
+Start here.
+
+The project README explains:
+
+- the engineering problem
+- what you will build
+- why the system matters
+- prerequisites
+- difficulty
+- estimated completion time
+- technologies
+- architecture
+- expected outcome
+- project milestones
+- completion requirements
+
+## `notes/`
+
+Learn the concepts you need before implementing them.
+
+The notes may cover:
+
+- Linux
+- networking
+- APIs
+- Python
+- containers
+- Kubernetes
+- Terraform
+- CI/CD
+- observability
+- cloud services
+- security
+- distributed systems
+- reliability
+- AI models
+- structured outputs
+- agents
+- retrieval
+- evaluation
+- prompt injection
+- model failure
+- cost
+- permissions
+
+## `learn/`
+
+Connect the theory to the project.
+
+You will understand:
+
+```text
+Engineering problem
+        ↓
+Architecture
+        ↓
+Components
+        ↓
+Data flow
+        ↓
+Environment
+        ↓
+Implementation strategy
+```
+
+## `build/`
+
+Build the system through progressive engineering milestones.
+
+Each milestone should help you understand:
+
+- what you are building
+- why you need it
+- how it works
+- what commands or code you need
+- what result to expect
+- how to verify the result
+- what can fail
+- how to troubleshoot it
+
+## `architecture/`
+
+Understand and document how the system works.
+
+Depending on the project, this may contain:
+
+- system architecture
+- component diagrams
+- data flows
+- trust boundaries
+- dependency diagrams
+- deployment architecture
+- failure domains
+- architecture decision records
+
+## Project-Specific Implementation
+
+The actual implementation directories depend on the system.
+
+A Kubernetes project might contain:
+
+```text
+kubernetes/
+helm/
+policies/
+```
+
+An infrastructure project might contain:
+
+```text
+terraform/
+modules/
+policies/
+```
+
+An observability project might contain:
+
+```text
+monitoring/
+dashboards/
+alerts/
+```
+
+An AI system might contain:
+
+```text
+prompts/
+schemas/
+evaluations/
+```
+
+A service might contain:
+
+```text
+src/
+api/
+config/
+```
+
+The learning structure stays familiar.
+
+The engineering architecture changes when the problem changes.
+
+## `tests/`
+
+Prove that the system behaves as expected.
+
+Tests may include:
+
+- unit tests
+- integration tests
+- infrastructure tests
+- policy tests
+- security tests
+- AI evaluation tests
+- acceptance tests
+- performance tests
+
+## `failures/`
+
+Break the system safely.
+
+You may intentionally create:
+
+- invalid configurations
+- dependency failures
+- network problems
+- authentication failures
+- permission errors
+- malformed data
+- resource exhaustion
+- unavailable services
+- model failures
+- invalid AI responses
+- timeouts
+- unsafe model output
+
+Then investigate:
+
+```text
+What failed?
+     ↓
+What evidence exists?
+     ↓
+What changed?
+     ↓
+What is your hypothesis?
+     ↓
+How can you test it?
+     ↓
+How can you recover?
+     ↓
+How do you verify recovery?
+```
+
+## `evidence/`
+
+Keep proof of what you built and tested.
+
+Evidence may include:
+
+```text
+evidence/
+├── screenshots/
+├── terminal-output/
+├── test-results/
+├── logs/
+└── sample-output/
+```
+
+Do not collect screenshots just to fill your repository.
+
+Capture evidence that proves something important happened.
+
+## `portfolio/`
+
+Turn the engineering work into something you can explain professionally.
+
+This section may include:
+
+- project summary
+- skills demonstrated
+- resume guidance
+- recruiter explanation
+- interview preparation
+- GitHub presentation guidance
+- LinkedIn project guidance
+
+## `solution/`
+
+Use the solution only after attempting the project yourself.
+
+The solution exists to help you:
+
+- compare approaches
+- investigate differences
+- understand another implementation
+- study alternative engineering decisions
+- verify difficult sections
+
+Do not present the provided solution as your own work.
+
+---
+
+# Build With AI, Not Around AI
+
+These projects use AI where AI provides useful engineering assistance.
+
+AI does not replace deterministic engineering controls.
+
+You will learn to distinguish between:
+
+```text
+FACTS
+Evidence directly supported by the system.
+
+AI ANALYSIS
+Interpretation generated from available evidence.
+
+RECOMMENDATIONS
+Possible actions that still require validation or authorization.
+```
+
+Where appropriate, you will implement:
+
+- input validation
+- structured outputs
+- schema validation
+- secret redaction
+- data minimization
+- prompt-injection defenses
+- least-privilege access
+- tool restrictions
+- human approval
+- audit logging
+- timeouts
+- rate limits
+- deterministic verification
+- non-AI fallback behavior
+
+Read the [AI Safety Standards](docs/ai-safety-standards.md) before implementing model or agent integrations.
+
+---
+
+# Project Catalogue
+
+The repository contains **100 projects across 10 engineering tracks**.
+
+Click any project to open its project directory.
+
+---
+
+## Track 1: AI for CI/CD and Software Delivery
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 001 | [AI-Powered CI Failure Triage Engine](projects/001-ai-powered-ci-failure-triage-engine/README.md) | Foundation |
+| 002 | [Intelligent Flaky Test Detection Service](projects/002-intelligent-flaky-test-detection-service/README.md) | Intermediate |
+| 003 | [Pull Request Risk Scoring Gate](projects/003-pull-request-risk-scoring-gate/README.md) | Intermediate |
+| 004 | [AI-Assisted Pipeline Generator with Policy Guardrails](projects/004-ai-assisted-pipeline-generator-with-policy-guardrails/README.md) | Intermediate |
+| 005 | [Deployment Log Root-Cause Correlator](projects/005-deployment-log-root-cause-correlator/README.md) | Intermediate |
+| 006 | [Release Readiness Decision Support System](projects/006-release-readiness-decision-support-system/README.md) | Advanced |
+| 007 | [CI Pipeline Performance Advisor](projects/007-ci-pipeline-performance-advisor/README.md) | Intermediate |
+| 008 | [Build Dependency Failure Predictor](projects/008-build-dependency-failure-predictor/README.md) | Advanced |
+| 009 | [Pipeline Configuration Drift Detector](projects/009-pipeline-configuration-drift-detector/README.md) | Intermediate |
+| 010 | [Multi-Repository Release Orchestrator](projects/010-multi-repository-release-orchestrator/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 2: AI for Incident Response and SRE
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 011 | [Incident Evidence Collection Assistant](projects/011-incident-evidence-collection-assistant/README.md) | Foundation |
+| 012 | [Alert Deduplication and Incident Clustering Service](projects/012-alert-deduplication-and-incident-clustering-service/README.md) | Intermediate |
+| 013 | [SLO Breach Investigation Assistant](projects/013-slo-breach-investigation-assistant/README.md) | Intermediate |
+| 014 | [Incident Timeline Reconstruction Engine](projects/014-incident-timeline-reconstruction-engine/README.md) | Intermediate |
+| 015 | [Runbook Retrieval and Recommendation Service](projects/015-runbook-retrieval-and-recommendation-service/README.md) | Intermediate |
+| 016 | [Human-in-the-Loop Incident Commander Copilot](projects/016-human-in-the-loop-incident-commander-copilot/README.md) | Advanced |
+| 017 | [Post-Incident Review Drafting System](projects/017-post-incident-review-drafting-system/README.md) | Intermediate |
+| 018 | [Recurring Incident Pattern Detector](projects/018-recurring-incident-pattern-detector/README.md) | Advanced |
+| 019 | [On-Call Handover Intelligence Service](projects/019-on-call-handover-intelligence-service/README.md) | Intermediate |
+| 020 | [Enterprise Incident Intelligence Platform](projects/020-enterprise-incident-intelligence-platform/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 3: AI for Observability and AIOps
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 021 | [Telemetry Quality Auditor](projects/021-telemetry-quality-auditor/README.md) | Foundation |
+| 022 | [Log Pattern Discovery and Noise Reduction Service](projects/022-log-pattern-discovery-and-noise-reduction-service/README.md) | Intermediate |
+| 023 | [Metric Anomaly Detection with Seasonal Baselines](projects/023-metric-anomaly-detection-with-seasonal-baselines/README.md) | Intermediate |
+| 024 | [Distributed Trace Bottleneck Investigator](projects/024-distributed-trace-bottleneck-investigator/README.md) | Intermediate |
+| 025 | [Observability Query Assistant](projects/025-observability-query-assistant/README.md) | Intermediate |
+| 026 | [Service Health Summary Generator](projects/026-service-health-summary-generator/README.md) | Foundation |
+| 027 | [Cardinality and Telemetry Cost Controller](projects/027-cardinality-and-telemetry-cost-controller/README.md) | Advanced |
+| 028 | [Adaptive Trace Sampling Controller](projects/028-adaptive-trace-sampling-controller/README.md) | Advanced |
+| 029 | [Observability Coverage Gap Analyzer](projects/029-observability-coverage-gap-analyzer/README.md) | Intermediate |
+| 030 | [Unified AIOps Correlation Platform](projects/030-unified-aiops-correlation-platform/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 4: AI for Kubernetes and Cloud Operations
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 031 | [Kubernetes Workload Failure Investigator](projects/031-kubernetes-workload-failure-investigator/README.md) | Foundation |
+| 032 | [Kubernetes Manifest Safety Reviewer](projects/032-kubernetes-manifest-safety-reviewer/README.md) | Intermediate |
+| 033 | [Kubernetes Event Correlation Engine](projects/033-kubernetes-event-correlation-engine/README.md) | Intermediate |
+| 034 | [Resource Request and Limit Advisor](projects/034-resource-request-and-limit-advisor/README.md) | Advanced |
+| 035 | [Cluster Capacity and Scheduling Forecaster](projects/035-cluster-capacity-and-scheduling-forecaster/README.md) | Advanced |
+| 036 | [Safe Kubernetes Remediation Assistant](projects/036-safe-kubernetes-remediation-assistant/README.md) | Advanced |
+| 037 | [Multi-Cluster Configuration Drift Intelligence](projects/037-multi-cluster-configuration-drift-intelligence/README.md) | Advanced |
+| 038 | [Kubernetes Upgrade Risk Analyzer](projects/038-kubernetes-upgrade-risk-analyzer/README.md) | Advanced |
+| 039 | [Cloud Resource Misconfiguration Investigator](projects/039-cloud-resource-misconfiguration-investigator/README.md) | Intermediate |
+| 040 | [AI-Assisted Cloud Operations Control Plane](projects/040-ai-assisted-cloud-operations-control-plane/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 5: AI for Infrastructure as Code and Configuration
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 041 | [Terraform Plan Risk Explainer](projects/041-terraform-plan-risk-explainer/README.md) | Foundation |
+| 042 | [Infrastructure Drift Detection and Triage Service](projects/042-infrastructure-drift-detection-and-triage-service/README.md) | Intermediate |
+| 043 | [Infrastructure Policy Remediation Assistant](projects/043-infrastructure-policy-remediation-assistant/README.md) | Intermediate |
+| 044 | [Cloud Architecture to Terraform Generator](projects/044-cloud-architecture-to-terraform-generator/README.md) | Advanced |
+| 045 | [Configuration Change Blast-Radius Analyzer](projects/045-configuration-change-blast-radius-analyzer/README.md) | Advanced |
+| 046 | [Ansible Failure Diagnosis Engine](projects/046-ansible-failure-diagnosis-engine/README.md) | Intermediate |
+| 047 | [GitOps Reconciliation Intelligence Service](projects/047-gitops-reconciliation-intelligence-service/README.md) | Intermediate |
+| 048 | [Infrastructure Module Quality Scoring Platform](projects/048-infrastructure-module-quality-scoring-platform/README.md) | Advanced |
+| 049 | [Environment Parity Analyzer](projects/049-environment-parity-analyzer/README.md) | Intermediate |
+| 050 | [Governed Infrastructure Change Platform](projects/050-governed-infrastructure-change-platform/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 6: AI for DevSecOps and Software Supply Chains
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 051 | [Vulnerability Triage and Remediation Prioritizer](projects/051-vulnerability-triage-and-remediation-prioritizer/README.md) | Foundation |
+| 052 | [Secret Exposure Investigation and Response System](projects/052-secret-exposure-investigation-and-response-system/README.md) | Intermediate |
+| 053 | [Software Bill of Materials Risk Intelligence Service](projects/053-software-bill-of-materials-risk-intelligence-service/README.md) | Intermediate |
+| 054 | [Container Image Trust and Risk Gate](projects/054-container-image-trust-and-risk-gate/README.md) | Intermediate |
+| 055 | [CI/CD Supply-Chain Attack Detector](projects/055-ci-cd-supply-chain-attack-detector/README.md) | Advanced |
+| 056 | [Infrastructure Threat Modeling Assistant](projects/056-infrastructure-threat-modeling-assistant/README.md) | Intermediate |
+| 057 | [Prompt Injection Defense Gateway for DevOps Agents](projects/057-prompt-injection-defense-gateway-for-devops-agents/README.md) | Advanced |
+| 058 | [DevOps Agent Permission and Tool-Use Firewall](projects/058-devops-agent-permission-and-tool-use-firewall/README.md) | Advanced |
+| 059 | [Compliance Evidence Collection and Validation Platform](projects/059-compliance-evidence-collection-and-validation-platform/README.md) | Advanced |
+| 060 | [Secure AI-Augmented Software Factory](projects/060-secure-ai-augmented-software-factory/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 7: AI for Platform Engineering and Developer Experience
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 061 | [Repository Onboarding Assistant](projects/061-repository-onboarding-assistant/README.md) | Foundation |
+| 062 | [Service Catalogue Metadata Quality Agent](projects/062-service-catalogue-metadata-quality-agent/README.md) | Intermediate |
+| 063 | [Golden Path Recommendation Engine](projects/063-golden-path-recommendation-engine/README.md) | Intermediate |
+| 064 | [Self-Service Environment Provisioning Portal](projects/064-self-service-environment-provisioning-portal/README.md) | Advanced |
+| 065 | [Developer Documentation Freshness Monitor](projects/065-developer-documentation-freshness-monitor/README.md) | Intermediate |
+| 066 | [Platform Support Ticket Triage Service](projects/066-platform-support-ticket-triage-service/README.md) | Intermediate |
+| 067 | [Internal Developer Platform Adoption Analyzer](projects/067-internal-developer-platform-adoption-analyzer/README.md) | Advanced |
+| 068 | [API and Service Dependency Discovery Platform](projects/068-api-and-service-dependency-discovery-platform/README.md) | Advanced |
+| 069 | [Ephemeral Preview Environment Manager](projects/069-ephemeral-preview-environment-manager/README.md) | Advanced |
+| 070 | [AI-Native Internal Developer Platform](projects/070-ai-native-internal-developer-platform/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 8: AI for FinOps, Capacity, and Performance
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 071 | [Cloud Cost Anomaly Investigation Service](projects/071-cloud-cost-anomaly-investigation-service/README.md) | Foundation |
+| 072 | [Idle and Orphaned Resource Discovery Engine](projects/072-idle-and-orphaned-resource-discovery-engine/README.md) | Intermediate |
+| 073 | [Kubernetes Cost Allocation and Waste Advisor](projects/073-kubernetes-cost-allocation-and-waste-advisor/README.md) | Intermediate |
+| 074 | [Workload Rightsizing Recommendation System](projects/074-workload-rightsizing-recommendation-system/README.md) | Advanced |
+| 075 | [AI Workload Token and Inference Cost Governor](projects/075-ai-workload-token-and-inference-cost-governor/README.md) | Intermediate |
+| 076 | [Capacity Forecasting and Procurement Advisor](projects/076-capacity-forecasting-and-procurement-advisor/README.md) | Advanced |
+| 077 | [Performance Regression Detection Gate](projects/077-performance-regression-detection-gate/README.md) | Intermediate |
+| 078 | [Cloud Commitment Risk Analyzer](projects/078-cloud-commitment-risk-analyzer/README.md) | Advanced |
+| 079 | [Cost-Aware Multi-Region Placement Advisor](projects/079-cost-aware-multi-region-placement-advisor/README.md) | Advanced |
+| 080 | [Autonomous FinOps Decision Support Platform](projects/080-autonomous-finops-decision-support-platform/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 9: AI for Reliability, Resilience, and Recovery
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 081 | [Backup Integrity and Restore Verification System](projects/081-backup-integrity-and-restore-verification-system/README.md) | Foundation |
+| 082 | [Disaster Recovery Readiness Auditor](projects/082-disaster-recovery-readiness-auditor/README.md) | Intermediate |
+| 083 | [Chaos Experiment Design Assistant](projects/083-chaos-experiment-design-assistant/README.md) | Intermediate |
+| 084 | [Automated Failure Injection Laboratory](projects/084-automated-failure-injection-laboratory/README.md) | Advanced |
+| 085 | [Dependency Failure Impact Simulator](projects/085-dependency-failure-impact-simulator/README.md) | Advanced |
+| 086 | [Auto-Scaling Policy Validation System](projects/086-auto-scaling-policy-validation-system/README.md) | Intermediate |
+| 087 | [Multi-Region Failover Decision Assistant](projects/087-multi-region-failover-decision-assistant/README.md) | Advanced |
+| 088 | [Resilience Regression Detection Pipeline](projects/088-resilience-regression-detection-pipeline/README.md) | Advanced |
+| 089 | [Production Recovery Verification Engine](projects/089-production-recovery-verification-engine/README.md) | Advanced |
+| 090 | [Intelligent Resilience Engineering Platform](projects/090-intelligent-resilience-engineering-platform/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+## Track 10: Enterprise AI Operations Capstones
+
+| ID | Project | Level |
+| --- | --- | --- |
+| 091 | [Model Gateway for Enterprise DevOps Tools](projects/091-model-gateway-for-enterprise-devops-tools/README.md) | Advanced |
+| 092 | [LLM Evaluation Pipeline for Operational Assistants](projects/092-llm-evaluation-pipeline-for-operational-assistants/README.md) | Advanced |
+| 093 | [DevOps Knowledge Retrieval Platform](projects/093-devops-knowledge-retrieval-platform/README.md) | Advanced |
+| 094 | [AI Agent Sandbox and Execution Broker](projects/094-ai-agent-sandbox-and-execution-broker/README.md) | Advanced |
+| 095 | [Multi-Agent Change Review Board Simulator](projects/095-multi-agent-change-review-board-simulator/README.md) | Capstone |
+| 096 | [Production Model Reliability Control Plane](projects/096-production-model-reliability-control-plane/README.md) | Capstone |
+| 097 | [Natural-Language Operations Interface with Approval Gates](projects/097-natural-language-operations-interface-with-approval-gates/README.md) | Capstone |
+| 098 | [AI Governance and Audit Platform for Engineering Teams](projects/098-ai-governance-and-audit-platform-for-engineering-teams/README.md) | Capstone |
+| 099 | [Enterprise Autonomous Remediation System](projects/099-enterprise-autonomous-remediation-system/README.md) | Capstone |
+| 100 | [AI-Powered DevOps Operations Center](projects/100-ai-powered-devops-operations-center/README.md) | Capstone |
+
+[Back to top](#ai-powered-devops-projects)
+
+---
+
+# Choose Your Learning Path
+
+You do not need to complete Projects 001 through 100 sequentially.
+
+Choose a path based on the engineering direction you want to develop.
+
+For the complete sequences and prerequisites, see:
+
+**[Learning Paths](docs/learning-paths.md)**
+
+## DevOps Engineer
+
+Start with:
+
+`001 → 005 → 021 → 031 → 041 → 051 → 071 → 081`
+
+Then continue through CI/CD, Kubernetes, cloud operations, and infrastructure as code.
+
+## Site Reliability Engineer
+
+Start with:
+
+`011 → 013 → 014 → 021 → 024 → 083 → 089`
+
+Then continue through incident response, observability, resilience, and recovery.
+
+## Platform Engineer
+
+Start with:
+
+`031 → 041 → 061 → 062 → 063 → 064`
+
+Then progress toward:
+
+`070 → 091 → 093 → 097`
+
+## DevSecOps Engineer
+
+Start with:
+
+`032 → 043 → 051 → 052 → 053 → 054`
+
+Then progress toward:
+
+`055 → 057 → 058 → 060 → 098`
+
+## Cloud or Infrastructure Engineer
+
+Start with:
+
+`039 → 041 → 042 → 049 → 071 → 081`
+
+Then continue into capacity planning, multi-region architecture, recovery, and governed infrastructure change.
+
+---
+
+# How to Complete a Project
+
+For your first project, follow the complete learning path.
+
+```text
+1. Read the project README
+              ↓
+2. Study the required notes
+              ↓
+3. Understand the architecture
+              ↓
+4. Prepare your environment
+              ↓
+5. Build each milestone
+              ↓
+6. Verify every checkpoint
+              ↓
+7. Run the tests
+              ↓
+8. Complete the failure exercises
+              ↓
+9. Investigate and recover
+              ↓
+10. Complete the final engineering challenge
+              ↓
+11. Collect your evidence
+              ↓
+12. Document your version
+              ↓
+13. Prepare your portfolio explanation
+              ↓
+14. Practice defending your decisions
+```
+
+Do not race through the repository.
+
+Completing 50 projects you cannot explain is less useful than completing five projects you deeply understand.
+
+---
+
+# Make Every Project Your Own
+
+Do not finish the guided implementation and immediately move to the next project.
+
+Change something.
+
+You might:
+
+- add a feature
+- change part of the architecture
+- support another environment
+- improve security
+- add another failure scenario
+- introduce additional tests
+- improve observability
+- automate a manual step
+- reduce cost
+- improve performance
+- replace one technology
+- support another cloud
+- improve recovery behavior
+
+Document what you changed and why.
+
+Your completed repository should eventually represent your engineering work, not a clone of this repository.
+
+---
+
+# Final Engineering Challenge
+
+Projects conclude with an engineering challenge appropriate to their level.
+
+You may receive requirements such as:
+
+```text
+Traffic has increased by 10x.
+
+Sensitive data can no longer leave the environment.
+
+The external AI provider occasionally becomes unavailable.
+
+The service must remain useful during model failure.
+
+Operational actions now require human approval.
+
+Infrastructure cost cannot increase.
+
+Redesign the necessary parts of the system.
+
+Implement your changes.
+
+Test them.
+
+Document your decisions.
+
+Prove the result.
+```
+
+You will not always receive the exact commands.
+
+That is intentional.
+
+---
+
+# Build Your Portfolio
+
+Your completed project should demonstrate more than the technologies you used.
+
+Someone reviewing your repository should be able to determine:
+
+- what problem you solved
+- who uses the system
+- how the architecture works
+- how data moves through the system
+- how you provisioned the environment
+- how you tested the implementation
+- where AI is used
+- where deterministic engineering remains in control
+- what information can reach the model
+- what permissions exist
+- what requires human approval
+- how model output is validated
+- how the system behaves when AI fails
+- how sensitive information is protected
+- how the system is monitored
+- how failure conditions were tested
+- how recovery works
+- how recovery was verified
+- what limitations remain
+- what you would change before production
+
+See **[Portfolio Guidance](docs/portfolio-guidance.md)** before publishing your work.
+
+---
+
+# Prepare to Explain What You Built
+
+You should be prepared to discuss your project at three levels.
+
+## Explain
+
+- What did you build?
+- What problem does it solve?
+- Who would use it?
+- How does the architecture work?
+- What technologies did you use?
+- Where does AI fit into the system?
+
+## Defend
+
+- Why did you choose this architecture?
+- Why did you choose these technologies?
+- What alternatives did you consider?
+- Where are the trust boundaries?
+- What happens when a dependency fails?
+- What happens when the model is unavailable?
+- How do you prevent unsafe AI output from affecting the system?
+
+## Redesign
+
+- What changes at 10x traffic?
+- How would you support multiple teams?
+- How would you reduce operating cost?
+- How would you deploy globally?
+- What would you change for a regulated environment?
+- What would you change before production?
+- What is currently the weakest part of your architecture?
+
+If you can build the system and answer those questions from your own implementation, you have done more than complete a tutorial.
+
+---
+
+# Responsible AI
+
+Projects may process source code, build output, logs, infrastructure metadata, security findings, incident records, configuration, or other sensitive operational information.
 
 Before connecting any external model:
 
-- Use synthetic or explicitly authorized data.
-- Remove credentials, tokens, personal information, and confidential values.
-- Review the provider's data handling and retention settings.
-- Apply input limits and request timeouts.
-- Validate model output against an explicit schema.
-- Test prompt-injection and unsafe-output scenarios.
-- Keep a non-AI fallback for critical workflows.
-- Never allow unrestricted model-generated commands to run against infrastructure.
+- use synthetic or explicitly authorized data
+- remove credentials and tokens
+- protect personal and confidential information
+- review the provider's data-handling requirements
+- restrict the amount of context sent
+- apply request timeouts
+- validate model output
+- test prompt-injection scenarios
+- test malformed and unsafe output
+- keep safe fallback behavior for critical workflows
+- restrict model access to tools
+- use minimum required permissions
+- require authorization for high-impact actions
 
-Read [AI Safety Standards](docs/ai-safety-standards.md) and [Security Policy](SECURITY.md) before implementing model or agent integrations.
+Never allow unrestricted model-generated commands to execute directly against infrastructure.
 
-## Contributing
+Read:
 
-Contributions are welcome when they improve technical accuracy, accessibility, safety, testing, or the learning experience.
+- [AI Safety Standards](docs/ai-safety-standards.md)
+- [Security Policy](SECURITY.md)
+
+---
+
+# Project Status
+
+Every project has a development status.
+
+| Status | Meaning |
+| --- | --- |
+| **Planned** | The project has been accepted into the catalogue. |
+| **In Development** | The project guide, implementation, tests, and learning material are being built. |
+| **Review** | The project is undergoing technical and learning-path review. |
+| **Ready** | You can complete the entire project from beginning to end. |
+| **Maintenance** | The project is complete and receives dependency, security, and documentation updates. |
+
+---
+
+# Contributing
+
+Contributions that improve technical accuracy, accessibility, safety, testing, documentation, or the learning experience are welcome.
 
 Before opening a pull request:
 
 1. Read [CONTRIBUTING.md](CONTRIBUTING.md).
 2. Follow [PROJECT-STANDARDS.md](PROJECT-STANDARDS.md).
-3. Keep examples reproducible and safe to run.
-4. Include tests for code or behavioral changes.
-5. Do not include secrets, private logs, customer data, or copyrighted course material.
-6. Explain the problem, the proposed change, and how the result was verified.
-
-## Project status
-
-The repository is being developed progressively. Each project README will show its current status:
-
-| Status | Meaning |
-| --- | --- |
-| Planned | The project has been accepted into the catalogue. |
-| In development | The guide, implementation, and tests are being built. |
-| Review | The project is undergoing technical and learning-path review. |
-| Ready | The project is available for complete follow-along use. |
-| Maintenance | The project is ready and receives dependency, security, and documentation updates. |
-
-## License
-
-Review [LICENSE](LICENSE) before copying, adapting, redistributing, or using repository material commercially.
-
-## Support and security
-
-Use GitHub Issues for reproducible documentation errors, broken exercises, and technical defects. Do not report vulnerabilities or expose sensitive information in a public issue. Follow the private reporting process in [SECURITY.md](SECURITY.md).
+3. Keep examples reproducible.
+4. Keep exercises safe to run.
+5. Include tests where appropriate.
+6. Never commit secrets or private information.
+7. Explain what you changed.
+8. Explain why you changed it.
+9. Explain how you verified the result.
 
 ---
 
-Build carefully. Test what you automate. Verify what AI produces. Document what you learn.
+# Security
+
+Do not publish:
+
+- credentials
+- API keys
+- access tokens
+- private keys
+- customer information
+- confidential logs
+- private infrastructure information
+- proprietary source code
+- sensitive incident information
+
+Do not report vulnerabilities through public GitHub issues.
+
+Follow [SECURITY.md](SECURITY.md) for private security reporting.
+
+---
+
+# License
+
+Review [LICENSE](LICENSE) before copying, adapting, redistributing, teaching from, or commercially using material from this repository.
+
+---
+
+# Start Building
+
+Choose a project that matches your current level and career direction.
+
+**Learn before you build.**
+
+**Understand before you automate.**
+
+**Verify before you trust.**
+
+**Break systems safely.**
+
+**Investigate with evidence.**
+
+**Recover deliberately.**
+
+**Document your decisions.**
+
+And when someone asks what you built, do not just list the tools you used.
+
+Explain the problem, the architecture, the decisions, the failures, the evidence, and the result.
