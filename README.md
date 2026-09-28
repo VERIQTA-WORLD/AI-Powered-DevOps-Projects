@@ -79,31 +79,6 @@ The repository follows several non-negotiable principles:
 9. Complete the production-readiness review.
 10. Document the finished project in your own repository and prepare to explain your decisions.
 
-## Standard project structure
-
-Each published project follows a predictable structure so that you always know where to begin and what to do next.
-
-```text
-projects/
-└── NNN-project-name/
-    ├── README.md
-    ├── 01-prerequisites/
-    ├── 02-getting-started/
-    ├── 03-project-guide/
-    ├── 04-labs/
-    ├── 05-walkthrough/
-    ├── 06-troubleshooting/
-    ├── 07-interview-prep/
-    ├── starter-project/
-    ├── reference-implementation/
-    ├── architecture/
-    ├── failure-scenarios/
-    ├── templates/
-    ├── docs/
-    └── .github/
-```
-
-The numbered labs are the primary follow-along path. The walkthrough shows the completed execution from start to finish, including expected results. The reference implementation provides a working comparison, not a substitute for completing the labs.
 
 ## Project catalogue
 
