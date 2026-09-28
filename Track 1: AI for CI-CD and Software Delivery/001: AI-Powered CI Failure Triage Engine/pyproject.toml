@@ -1,0 +1,326 @@
+# ==============================================================================
+# Project 001 — AI-Powered CI Failure Triage Engine
+# Python Project Configuration
+# ==============================================================================
+
+[build-system]
+requires = ["hatchling>=1.27,<2.0"]
+build-backend = "hatchling.build"
+
+
+# ==============================================================================
+# PROJECT METADATA
+# ==============================================================================
+
+[project]
+name = "veriqta-ci-triage"
+version = "0.1.0"
+description = "A secure, evidence-first AI-assisted system for triaging CI/CD failures."
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+
+authors = [
+    { name = "VERIQTA" }
+]
+
+keywords = [
+    "ai",
+    "devops",
+    "ci-cd",
+    "ci",
+    "failure-triage",
+    "llm",
+    "observability",
+    "security",
+    "sre",
+    "python",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Testing",
+    "Topic :: System :: Monitoring",
+]
+
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "httpx>=0.28,<1.0",
+    "jsonschema>=4.23,<5.0",
+    "pydantic>=2.10,<3.0",
+    "pydantic-settings>=2.7,<3.0",
+    "python-dotenv>=1.0,<2.0",
+    "uvicorn[standard]>=0.34,<1.0",
+]
+
+
+# ==============================================================================
+# OPTIONAL DEPENDENCIES
+# ==============================================================================
+
+[project.optional-dependencies]
+
+dev = [
+    "mypy>=1.14,<2.0",
+    "pre-commit>=4.0,<5.0",
+    "pytest>=8.3,<9.0",
+    "pytest-asyncio>=0.25,<1.0",
+    "pytest-cov>=6.0,<7.0",
+    "ruff>=0.9,<1.0",
+]
+
+test = [
+    "pytest>=8.3,<9.0",
+    "pytest-asyncio>=0.25,<1.0",
+    "pytest-cov>=6.0,<7.0",
+]
+
+
+# ==============================================================================
+# COMMAND-LINE ENTRY POINT
+# ==============================================================================
+
+[project.scripts]
+ci-triage = "ci_triage.main:main"
+
+
+# ==============================================================================
+# HATCH — SRC LAYOUT
+# ==============================================================================
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ci_triage"]
+
+
+# ==============================================================================
+# PYTEST
+# ==============================================================================
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+
+testpaths = [
+    "tests",
+]
+
+python_files = [
+    "test_*.py",
+]
+
+python_classes = [
+    "Test*",
+]
+
+python_functions = [
+    "test_*",
+]
+
+addopts = [
+    "-ra",
+    "--strict-config",
+    "--strict-markers",
+]
+
+markers = [
+    "unit: fast tests for isolated deterministic components",
+    "integration: tests covering interactions between project components",
+    "security: tests covering redaction, prompt injection, unsafe output, and trust boundaries",
+    "acceptance: end-to-end tests verifying Project 001 completion requirements",
+    "ai: tests or evaluations involving the AI integration boundary",
+]
+
+asyncio_mode = "auto"
+
+filterwarnings = [
+    "error",
+]
+
+
+# ==============================================================================
+# COVERAGE
+# ==============================================================================
+
+[tool.coverage.run]
+branch = true
+source = [
+    "ci_triage",
+]
+
+omit = [
+    "*/__init__.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+precision = 2
+
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "if typing.TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+
+# ==============================================================================
+# RUFF
+# ==============================================================================
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = [
+    "src",
+    "tests",
+    "api",
+    "evaluations",
+]
+
+exclude = [
+    ".git",
+    ".venv",
+    "build",
+    "dist",
+    "htmlcov",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP",
+    "SIM",
+    "RUF",
+]
+
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "S101",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+
+# ==============================================================================
+# MYPY
+# ==============================================================================
+
+[tool.mypy]
+python_version = "3.12"
+
+files = [
+    "src",
+    "api",
+]
+
+mypy_path = [
+    "src",
+]
+
+strict = true
+pretty = true
+show_error_codes = true
+show_column_numbers = true
+warn_unused_configs = true
+
+exclude = [
+    "^build/",
+    "^dist/",
+]
+
+
+# ==============================================================================
+# PACKAGE LAYOUT
+# ==============================================================================
+#
+# Python application code:
+#
+#   src/
+#   └── ci_triage/
+#       ├── __init__.py
+#       ├── main.py
+#       ├── ingestion/
+#       ├── redaction/
+#       ├── evidence/
+#       ├── ai/
+#       ├── validation/
+#       ├── reporting/
+#       ├── observability/
+#       └── config/
+#
+# API interface:
+#
+#   api/
+#   ├── app.py
+#   ├── routes.py
+#   └── models.py
+#
+# Test suites:
+#
+#   tests/
+#   ├── unit/
+#   ├── integration/
+#   ├── security/
+#   └── acceptance/
+#
+# ==============================================================================
+
+
+# ==============================================================================
+# PROJECT DESIGN BOUNDARIES
+# ==============================================================================
+#
+# This configuration supports the architecture established for Project 001.
+#
+# Deterministic application code is responsible for:
+#
+# - CI failure ingestion
+# - log normalization
+# - supported secret redaction
+# - evidence extraction
+# - configuration
+# - schema validation
+# - safety checks
+# - fallback behavior
+# - testing
+# - observability
+#
+# The AI layer is bounded to:
+#
+# - failure interpretation
+# - pattern reasoning
+# - classification assistance
+# - explanation
+# - recommended investigation steps
+#
+# The AI layer must not:
+#
+# - execute shell commands
+# - modify infrastructure
+# - approve deployments
+# - restart workloads
+# - delete resources
+# - access unrestricted credentials
+# - perform production remediation
+#
+# Model output remains untrusted until it passes the project's validation
+# and safety controls.
+#
+# ==============================================================================
